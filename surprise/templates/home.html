@@ -1,0 +1,150 @@
+{% load static %}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+body{
+background: linear-gradient(135deg,#ff9ec4,#ffd6e7,#ffc2d1);
+font-family: 'Poppins', sans-serif;
+text-align:center;
+padding-top:80px;
+min-height:100vh;
+}
+
+.card{
+background: rgba(255,255,255,0.25);
+backdrop-filter: blur(12px);
+padding:40px;
+border-radius:25px;
+width:80%;
+max-width:500px;
+margin:auto;
+box-shadow:0 8px 30px rgba(0,0,0,0.15);
+}
+
+button{
+padding:14px 28px;
+border-radius:30px;
+background:linear-gradient(45deg,#ff4d6d,#ff758f);
+color:white;
+border:none;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+h1{
+color:#8a0033;
+font-weight:700;
+}
+
+h2,h3,p{
+color:#5a0033;
+}
+
+.small{
+font-size:12px;
+opacity:0.7;
+margin-top:40px;
+}
+
+.heart{
+position:fixed;
+top:-10px;
+color:#ff4d6d;
+animation:fall 6s linear infinite;
+font-size:20px;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px);}
+100%{transform:translateY(100vh);}
+}
+
+</style>
+
+<audio id="bgmusic" loop>
+  <source src="{% static 'music.mp3' %}" type="audio/mp3">
+</audio>
+
+<div style="position:fixed; top:20px; right:20px; z-index:999;">
+<button onclick="toggleMusic()" style="
+background:rgba(255,255,255,0.6);
+border:none;
+padding:12px 14px;
+border-radius:50%;
+font-size:18px;
+cursor:pointer;">
+🎵
+</button>
+</div>
+
+<script>
+var music = document.getElementById("bgmusic");
+function toggleMusic(){
+ if(music.paused){
+   music.play();
+ } else {
+   music.pause();
+ }
+}
+</script>
+
+<div class="card">
+<h1 id="typing"></h1>
+
+<p>
+You once made something special for me. 
+<br>So I made this little world for you❤️  
+</p>
+
+<p>
+Every click here holds a reason,  
+every page holds a feeling. 
+<br> 
+So open slowly and feel it❤️
+</p>
+
+<br>
+
+<a href="/reasons/">
+<button>Enter our little world!💌</button>
+</a>
+
+<p class="small">
+Made with too much love just for you, My Kashyap!❤️
+</p>
+</div>
+
+
+<script>
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+},500);
+</script>
+
+    <script>
+let text = "HAPPY VALENTINE'S DAY BABYYYY!❤️";
+let i = 0;
+
+function typeEffect(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 80);
+  }
+}
+
+window.onload = typeEffect;
+</script>
